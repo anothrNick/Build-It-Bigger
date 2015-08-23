@@ -1,4 +1,4 @@
-# Project 4 - Android Nanodegree
+# Project 4 : Java, Android Libraries. Google Endpoints
 
 # Gradle for Android and Java Final Project
 
