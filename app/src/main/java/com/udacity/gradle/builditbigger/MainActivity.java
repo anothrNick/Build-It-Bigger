@@ -1,5 +1,6 @@
 package com.udacity.gradle.builditbigger;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         new GetJoke().execute();
     }
 
-    class GetJoke extends AsyncTask<String, Void, String> {
+    public class GetJoke extends AsyncTask<String, Void, String> {
 
         @Override
         protected String doInBackground(String... params) {
