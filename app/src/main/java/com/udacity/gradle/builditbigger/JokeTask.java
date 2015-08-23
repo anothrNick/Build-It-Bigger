@@ -19,8 +19,6 @@ public class JokeTask extends AsyncTask<String, Void, String> {
     private TaskResponseListener mListener = null;
     private static MyApi jokeApi = null;
 
-    public JokeTask() {}
-
     public JokeTask(Context context) {
         mContext = context;
     }
