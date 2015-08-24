@@ -1,33 +1,27 @@
 package com.udacity.gradle.builditbigger;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.AsyncTask;
+import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.support.annotation.VisibleForTesting;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
-
-import com.example.Joke;
-import com.example.nick.myapplication.jokes.myApi.MyApi;
-import com.google.api.client.extensions.android.http.AndroidHttp;
-import com.google.api.client.extensions.android.json.AndroidJsonFactory;
-import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
-import com.google.api.client.googleapis.services.GoogleClientRequestInitializer;
-import com.nicksjostrom.jokelibrary.JokeActivity;
-
-import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
+
+    public static ProgressDialog myProgressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if(myProgressDialog == null) {
+            myProgressDialog = new ProgressDialog(this);
+            myProgressDialog.setIndeterminate(false);
+            myProgressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            myProgressDialog.setMessage("One sec, grabbing a joke...");
+        }
     }
 
     @Override
@@ -53,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void getJoke(View view) {
+        myProgressDialog.show();
         JokeTask task = new JokeTask(this);
         task.execute();
     }

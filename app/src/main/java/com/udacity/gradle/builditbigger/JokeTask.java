@@ -47,6 +47,7 @@ public class JokeTask extends AsyncTask<String, Void, String> {
     protected void onPostExecute(String result){
         // if not null, this is being called from the activity
         if(mContext != null){
+            MainActivity.myProgressDialog.dismiss();
             Intent intent = new Intent(mContext, JokeActivity.class);
             intent.putExtra(JokeActivity.JOKE, result);
             mContext.startActivity(intent);
